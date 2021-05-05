@@ -3,19 +3,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: hugopipe
+  name: s291468
 spec:
   selector:
     matchLabels:
-      app: hugopipe
+      app: s291468
   replicas: 1
   template:
     metadata:
       labels:
-        app: hugopipe
+        app: s291468
     spec:
       containers:
-      - name: hugopipe
+      - name: s291468
         image: luigiferrettino/hugopipe:${IMG_TAG}
         resources:
           requests:
@@ -31,12 +31,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: hugopipe
+  name: s291468
   labels:
-    app: hugopipe
+    app: s291468
 spec:
   selector:
-    app: hugopipe
+    app: s291468
   ports:
     - protocol: "TCP"
       port: 80
@@ -47,22 +47,22 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: hugopipe
+  name: s291468
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-production
 spec:
   tls:
   - hosts:
-    - hugopipe.crownlabs.polito.it
+    - s291468.crownlabs.polito.it
     secretName: hugo-site-cert
   rules:
-  - host: hugopipe.crownlabs.polito.it
+  - host: s291468.crownlabs.polito.it
     http:
       paths:
         - pathType: Prefix
           path: "/"
           backend:
             service:
-              name: hugopipe
+              name: s291468
               port:
                 number: 80
