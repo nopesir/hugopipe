@@ -1,12 +1,11 @@
-baseurl = "https://hugopipe.crownlabs.polito.it"
+baseUrl = "/"
 languageCode = "en-us"
 theme = "terminal"
 paginate = 5
 
 [params]
-  contentTypeName = "post"
   themeColor = "blue"
-  showMenuItems = 2
+  showMenuItems = 3
   fullWidthTheme = false
   centerTheme = false
 
