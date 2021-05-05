@@ -24,6 +24,6 @@ There are a lot of solutions proposed in the literature, but none of them takes 
 <br><br/>
 #### Authors
 
-Models development: <a href="https://github.com/nopesir">Luigi Ferrettino</a><br>
-Training: <a href="https://github.com/rinaldoclemente">Rinaldo Clemente</a>
-<br>Testing: <a href="#">Alessandro Bozzella</a>
+Models development: [Luigi Ferrettino](https://github.com/nopesir)  
+Training: [Rinaldo Clemente](https://github.com/rinaldoclemente)  
+Testing: Alessandro Bozzella
