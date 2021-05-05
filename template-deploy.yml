@@ -1,0 +1,68 @@
+---
+# Deployment manifest​
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hugopipe
+spec:
+  selector:
+    matchLabels:
+      app: hugopipe
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: hugopipe
+    spec:
+      containers:
+      - name: hugopipe
+        image: luigiferrettino/hugopipe:v0
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 80
+---
+# Service manifest
+apiVersion: v1
+kind: Service
+metadata:
+  name: hugopipe
+  labels:
+    app: hugopipe
+spec:
+  selector:
+    app: hugopipe
+  ports:
+    - protocol: "TCP"
+      port: 80
+      targetPort: 80
+  type: ClusterIP
+---
+# Ingress manifest​
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: hugopipe
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-production
+spec:
+  tls:
+  - hosts:
+    - hugopipe.crownlabs.polito.it
+    secretName: hugo-site-cert
+  rules:
+  - host: hugopipe.crownlabs.polito.it
+    http:
+      paths:
+        - pathType: Prefix
+          path: "/"
+          backend:
+            service:
+              name: hugopipe
+              port:
+                number: 80
