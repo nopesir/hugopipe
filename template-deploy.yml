@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: hugopipe
-        image: luigiferrettino/hugopipe:v0
+        image: luigiferrettino/hugopipe:${IMG_TAG}
         resources:
           requests:
             memory: "64Mi"
